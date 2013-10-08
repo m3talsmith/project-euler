@@ -1,4 +1,4 @@
 project-euler
 =============
 
-A stab at Project Euler (http://projecteuler.net) in multiple languages.
+Solutions to Project Euler problems (http://projecteuler.net) in multiple languages.
