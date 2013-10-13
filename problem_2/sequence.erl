@@ -1,15 +1,16 @@
 -module(sequence).
--export([main/1,fib/1]).
+-export([main/1, fib_even_upto/1]).
 
-main(MaxSum) ->
-  io:format("Starting Fibonacci sequences: ~p~n", [time()]),
-  Sequence  = fib(MaxSum),
-  io:format("Finished! ~p~n", [time()]),
-  io:format("Sequence: ~p~n", [Sequence]).
+main(MaxCount) -> fib_even_upto(MaxCount).
 
-fib(N) ->
-  fib(N,0,1,[0]).
-fib(0, Current, Next, FibList) ->
-  lists:reverse(FibList);
-fib(N, Current, Next, FibList) ->
-  fib(N - 1, Next, Current + Next, [Next | FibList]).
+fib_even_upto(0)    -> [0];
+fib_even_upto(Upto) -> fib_even_upto(0, 1, Upto, [0]).
+
+fib_even_upto(Current, Next, Upto, Sequence) when (Current + Next) > Upto ->
+  io:format("Sequence generated: ~p~n", [lists:reverse(Sequence)]);
+fib_even_upto(Current, Next, Upto, Sequence) when ((Current + Next) rem 2) =:= 1 ->
+  N = Current + Next,
+  fib_even_upto(Next, N, Upto, Sequence);
+fib_even_upto(Current, Next, Upto, Sequence) ->
+  N = Current + Next,
+  fib_even_upto(Next, N, Upto, [N | Sequence]).
