@@ -1,7 +1,7 @@
 -module(sequence).
--export([main/0, fib_even_upto/1, sum/1]).
+-export([start/0, fib_even_upto/1, sum/1]).
 
-main() -> sum(fib_even_upto(4000000)).
+start() -> sum(fib_even_upto(4000000)).
 
 fib_even_upto(0)    -> [0];
 fib_even_upto(Upto) -> fib_even_upto(0, 1, Upto, [0]).
